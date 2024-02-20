@@ -1,0 +1,228 @@
+---
+title: "MATH1324 Assignment 1"
+subtitle: Statistical analysis of Climate data
+output:
+  html_document:
+    df_print: paged
+  html_notebook: default
+  pdf_document: 
+---
+
+## Student Details
+
+
+Deepthi Suresh (s3991481)
+
+
+## Problem Statement
+It is well known fact that Sydney and Melbourne has varying climatic conditions.This analysis aims to investigates the weather in Sydney and Melbourne using descriptive statistical tools and determining the normality distribution of each variable.
+
+The data is a subset of 93 observation collected over 3 months in 2023 in both Sydney and Melbourne. It contains two variables - 
+
+1. Solar Exposure - The Daily global solar exposure is the total solar energy for a day falling on a horizontal surface. It is the highest during Summers and lowest during Winters.
+2. Maximum temperature - The highest temperature recorded in 24 hours
+
+The approach to the investigation includes calculating Mean, Median, IQR, Quartiles, Standard Deviation etc.to provide a summary of the variables in both Sydney and Melbourne. Secondly, the analysis will also compare the empirical distribution of each variable to the normal distribution in both the cities.
+
+## Load Packages
+
+```{r}
+library(readr)
+library(tidyr)
+library(dplyr)
+library(magrittr)
+library(ggplot2)
+```
+
+## Data
+
+Import the climate data and prepare it for analysis. Show your code.
+
+
+```{r}
+getwd()
+
+# Importing datasets
+Melbourne<- read_csv("Climate Data Melbourne-1.csv")
+Sydney<- read_csv("Climate Data Sydney-1.csv")
+
+# Remove empty columns and add a new column with city name, so that the datasets can be merged
+Melbourne <- Melbourne %>% select(`Date in 2023`,`Solar exposure`,`Maximum temperature`) %>% mutate(.,City = rep("Melbourne",93))  
+
+# changing the column names of the Melbourne Data to match with the Sydney dataset                                                                                          
+ names(Melbourne)  
+ colnames(Melbourne) <- c("Day in 2023","Solar exposure","Maximum temperature","City")
+
+ # Remove empty columns and add a new column with city name, so that the datasets can be merged
+Sydney <- Sydney %>% select(`Day in 2023`,`Solar exposure`,`Maximum temperature`) %>% mutate(.,City = rep("Sydney",93))
+
+# Merging both datasets into one
+Total <- rbind(Melbourne,Sydney)
+```
+
+
+
+## Summary Statistics
+
+
+Calculate descriptive statistics (i.e., mean, median, standard deviation, first and third quartile, interquartile range, minimum and maximum values) of the selected variable grouped by city.
+
+```{r}
+# Checking if the data is imported correctly
+head(Melbourne)
+head(Sydney)
+head(Total)
+# checking the structure of the data
+str(Melbourne)
+str(Sydney)
+str(Total)
+
+# converting city into factor variable
+Total$City <- as.factor(Total$City)
+levels(Total$City)
+
+summary(Sydney)
+summary(Melbourne)
+
+#Summary Statistics for Solar Exposure grouped by City
+Total %>% group_by(City) %>% 
+  summarise(Min = min(`Solar exposure`,na.rm = TRUE),
+Q1 = quantile(`Solar exposure`,probs = .25,na.rm = TRUE),
+Median = median(`Solar exposure`, na.rm = TRUE),
+Q3 = quantile(`Solar exposure`,probs = .75,na.rm = TRUE),
+Max = max(`Solar exposure`,na.rm = TRUE),
+Mean = mean(`Solar exposure`, na.rm = TRUE),
+SD = sd(`Solar exposure`, na.rm = TRUE),
+n = n(),Missing = sum(is.na(`Solar exposure`)),
+Var = var(`Solar exposure`), IQR = IQR(`Solar exposure`)
+)
+
+#Summary Statistics for Maximum Temperature grouped by City
+Total %>% group_by(City) %>% 
+  summarise(Min = min(`Maximum temperature`,na.rm = TRUE),
+Q1 = quantile(`Maximum temperature`,probs = .25,na.rm = TRUE),
+Median = median(`Maximum temperature`, na.rm = TRUE),
+Q3 = quantile(`Maximum temperature`,probs = .75,na.rm = TRUE),
+Max = max(`Maximum temperature`,na.rm = TRUE),
+Mean = mean(`Maximum temperature`, na.rm = TRUE),
+SD = sd(`Maximum temperature`, na.rm = TRUE),
+n = n(),Missing = sum(is.na(`Maximum temperature`)),
+Var = var(`Maximum temperature`), IQR = IQR(`Maximum temperature`))
+```
+
+
+## Distribution Fitting
+
+Compare the empirical distribution of selected variable to a normal distribution separately in Melbourne and in Sydney. You need to do this visually by plotting the histogram with normal distribution overlay. Show your code.
+
+
+```{r}
+# Histogram of Solar Exposure in Melbourne
+Melbourne %>% select(`Solar exposure`) %>%
+  ggplot() +
+  geom_histogram(aes(x = Melbourne$`Solar exposure`, y = (..count..)/sum(..count..)),
+                 position = "identity", binwidth = 2, 
+                 fill = "#377eb8", color = "white") +
+  labs(x = "Solar Exposure", y = "Proportion", title = "Histogram of Solar Exposure in Melbourne") +
+  theme_classic() +
+  stat_function(fun = dnorm,
+                args = list(mean = mean(Melbourne$`Solar exposure`),
+                            sd = sd(Melbourne$`Solar exposure`)),
+                col = "red",
+                size = 3) +
+  geom_vline(aes(xintercept = mean(Melbourne$`Solar exposure`)), color = "green", 
+             linetype = "dashed", size = 1)+
+   annotate("text", x = 20, y = 0.11, 
+           # add mean label and actual mean value
+           label = paste("Mean:", round(mean(Melbourne$`Solar exposure`), 2)),
+           color = "green")
+
+#Histogram of Solar Exposure in Sydney
+Sydney %>% select(`Solar exposure`) %>%
+  ggplot() +
+  geom_histogram(aes(x = Sydney$`Solar exposure`, y = (..count..)/sum(..count..)),
+                 position = "identity", binwidth = 2, 
+                 fill = "orange", color = "white") +
+  labs(x = "Solar Exposure", y = "Proportion", title = "Histogram of Solar Exposure in Sydney") +
+  theme_classic() +
+  stat_function(fun = dnorm,
+                args = list(mean = mean(Sydney$`Solar exposure`),
+                            sd = sd(Sydney$`Solar exposure`)),
+                col = "red",
+                size = 3)+
+  geom_vline(aes(xintercept = mean(Sydney$`Solar exposure`)), color = "green", 
+             linetype = "dashed", size = 1)+
+   annotate("text", x = 20, y = 0.2, 
+           # add mean label and actual mean value
+           label = paste("Mean:", round(mean(Sydney$`Solar exposure`), 2)),
+           color = "green")
+
+#Histogram of Maximum temperature in Melbourne
+Melbourne %>% select(`Maximum temperature`) %>%
+  ggplot() +
+  geom_histogram(aes(x = Melbourne$`Maximum temperature`, y = (..count..)/sum(..count..)),
+                 position = "identity", binwidth = 2, 
+                 fill = "#377eb8", color = "white") +
+  labs(x = "Maximum Temperature", y = "Proportion", title = "Histogram of Maximum Temperature in Melbourne") +
+  theme_classic() +
+  stat_function(fun = dnorm,
+                args = list(mean = mean(Melbourne$`Maximum temperature`),
+                            sd = sd(Melbourne$`Maximum temperature`)),
+                col = "red",
+                size = 3) +
+  geom_vline(aes(xintercept = mean(Melbourne$`Maximum temperature`)), color = "green", 
+             linetype = "dashed", size = 1)+
+   annotate("text", x = 26, y = 0.15, 
+           # add mean label and actual mean value
+           label = paste("Mean:", round(mean(Melbourne$`Maximum temperature`), 2)),
+           color = "green")
+#Histogram of Maximum temperature in Sydney
+Sydney %>% select(`Maximum temperature`) %>%
+  ggplot() +
+  geom_histogram(aes(x = Sydney$`Maximum temperature`, y = (..count..)/sum(..count..)),
+                 position = "identity", binwidth = 2, 
+                 fill = "orange", color = "white") +
+  labs(x = "Solar Exposure", y = "Proportion", title = "Histogram of Maximum Temperature in Sydney") +
+  theme_classic() + 
+  stat_function(fun = dnorm,
+                args = list(mean = mean(Sydney$`Maximum temperature`),
+                            sd = sd(Sydney$`Maximum temperature`)),
+                col = "red",
+                size = 3) +geom_vline(aes(xintercept = mean(Sydney$`Maximum temperature`)), color = "green", 
+             linetype = "dashed", size = 1)+
+   annotate("text", x = 22, y = 0.2, 
+           # add mean label and actual mean value
+           label = paste("Mean:", round(mean(Sydney$`Maximum temperature`), 2)),
+           color = "green")
+
+# checking the normality of the variables using Shapiro test and KS test
+#When the p-value is not less than .05, it indicates that the data is normally distributed.
+#When the p-value is less than .05, it indicates that the data is not normally distributed.
+shapiro.test(Melbourne$`Solar exposure`)
+ks.test(Melbourne$`Solar exposure`,'pnorm')
+# Melbourne Solar Exposure is Not Normally distributed as p value is less than .05
+shapiro.test(Melbourne$`Maximum temperature`)
+ks.test(Melbourne$`Maximum temperature`,'pnorm')
+#Melbourne Maximum Temperature is Not Normally distributed as p value is less than .05
+shapiro.test(Sydney$`Maximum temperature`)
+ks.test(Sydney$`Maximum temperature`,'pnorm')
+#Sydney's Maximum Temperature is Not Normally distributed as p value is less than .05
+shapiro.test(Sydney$`Solar exposure`)
+ks.test(Sydney$`Solar exposure`,'pnorm')
+#Sydney's Solar Exposure is Not Normally distributed as p value is less than .05
+
+```
+
+## Interpretation
+
+The Summary statistics shows that on an average Sydney has slightly higher Solar Exposure with a mean of 16.5, compared to a 15.2 in Melbourne. However a maximum of 31.7 was recorded in Melbourne in the last 3 months.The Shapiro and KS test results shows that the distribution is not normal as the P-value is less than 0.05, which indicates that the Solar Exposure is a Skewed distribution in both the cities, where the mean is greater than median and hence they are both Right Skewed distributions. The same can be noted from the historam as well.
+
+The maximum temperature statistics shows that the average temperature is higher in Sydney than in Melbourne with a mean of 24.79 compared to a 22.42 in Melbourne.Melbourne also has much lower minimum temperatures than Sydney, with the lowest being 11.50.The Shapiro and KS test results shows that the distribution is not normal as the P-value is less than 0.05, which indicates that the Maximum Temperature is a Skewed distribution. The Maximum temperature variable also follows a distribution where the temperature in Melbourne is right skewed ( i.e mean is greater than median ) and in Sydney is left Skewed ( i.e mean is less than median), which can be identified by comparing the mean and median.The same can be noted from the historam as well.
+
+## References
+2021. Statology. Sep 29. Accessed Aug 25, 2023. https://www.statology.org/test-for-normality-in-r/.
+
+Schork, Joachim. n.d. Statistics Globe. Accessed Aug 25, 2023. https://statisticsglobe.com/normal-density-curve-on-top-of-histogram-ggplot2-r.
+
+Laleh Tafakori(2023) 'Applied Analytics'[video recordings],RMIT University, Melbourne
+
