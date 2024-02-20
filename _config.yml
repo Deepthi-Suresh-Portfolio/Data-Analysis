@@ -1,3 +1,3 @@
 # add the following to _config.yml file
 title: Deepthi Suresh
-theme: jeykll-theme-cayman
+theme: pages-themes/cayman@v0.2.0
