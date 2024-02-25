@@ -36,6 +36,8 @@ Queries.pdf contains the following :
   * a snapshot of the first 10 results of the query
   * Data visualisation represented as a graph or chart that presents the results in a meaningful and easy to understand manner.
 
+Note: This project is completed as a part of the Database Concepts Course for my masters program at RMIT University
+
 
 
 
