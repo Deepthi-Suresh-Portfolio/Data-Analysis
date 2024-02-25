@@ -42,7 +42,7 @@ Description of the schema
 • published_by -- associates publishers with books. There is an attribute 'role' here too.
 • borrow_copy -- associates physical copies of books with a transaction. Members are allowed to borrow several books in a single transaction.
 
-The ER Model :
+The ER Model :<img width="759" alt="ER Model of Library DB" src="https://github.com/Deepthi-Suresh-Portfolio/Data-Analysis/assets/160568228/14e9e5fc-14de-49d5-ab84-832f5cfa8ce5">
 
  1. Display the title, subtitle and Edition of books which are published in OXFORD. The output should have column headings “Title”, “Subtitle”, “Edition” and “Place” (and matching case). (12 rows)
  2. Compute the total number of book copies for each book. Output the bookdescid together with its total number of book copies, in decreasing order of total number of book copies. (413 rows)
