@@ -3,4 +3,4 @@ The objective of this project is to use SQL for querying a relational database a
   * identifying Primary keys and Foreign keys
   * decompose into relations in 3NF
   
-Part A
+**Part A**
