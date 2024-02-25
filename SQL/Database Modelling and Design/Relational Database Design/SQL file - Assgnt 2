@@ -1,0 +1,112 @@
+/*Q1 */
+SELECT title AS 'Title', subtitle AS 'Subtitle', Edition,place AS 'Place'
+FROM book
+WHERE place = 'OXFORD';
+
+/*Q2 */
+SELECT bookdescid,count(*) AS 'Number of book copies'
+FROM book_copy
+GROUP BY bookdescid
+ORDER BY count(*) DESC;
+
+/* Q3 a.*/
+SELECT DISTINCT book_copy.BOOKDESCID AS 'Book Desc ID',b.title AS 'Title', b.subtitle AS 'Subtitle', b.Edition,b.place AS 'Place'
+FROM book b
+    LEFT JOIN book_copy 
+        ON b.BOOKDESCID = book_copy.BOOKDESCID
+            LEFT JOIN borrow_copy 
+                ON book_copy.BOOKID = borrow_copy.BOOKID
+WHERE borrow_copy.transactionid IS NULL;
+
+/*Q3 b. */
+
+SELECT b.BOOKDESCID AS 'Book Desc ID',b.title AS 'Title', b.subtitle AS 'Subtitle',
+     b.Edition,b.place AS 'Place'
+FROM book b
+WHERE b.bookdescID IN
+    (SELECT bookdescID 
+     FROM book_copy bc 
+     WHERE bc.bookID NOT IN
+        (SELECT bookID 
+         FROM borrow_copy)) 
+     OR b.bookdescID NOT IN 
+        (SELECT bookdescID 
+         FROM book_copy);
+
+
+
+/*Q4*/
+SELECT authorID, firstname, middlename, lastname, count(*) AS 'No. of books'
+FROM written_by
+    JOIN author 
+        ON written_by.AUTHORID=author.AUTHORID
+WHERE lower(ROLE) = 'author'
+GROUP BY written_by.AUTHORID
+HAVING count(*) >1;
+
+
+/*Q5*/
+SELECT book.TITLE AS 'Book Title',date(borrow.DUEDATE) AS 'Due Date',date(borrow.RETURNDATE) AS 'Return Date', 
+    (borrow.RETURNDATE-borrow.DUEDATE) AS 'No of days delayed'
+FROM borrow
+    JOIN borrow_copy 
+        ON borrow.TRANSACTIONID=borrow_copy.TRANSACTIONID
+            JOIN book_copy 
+                ON book_copy.BOOKID= borrow_copy.BOOKID
+                    JOIN book 
+                        ON book_copy.BOOKDESCID=book.BOOKDESCID
+WHERE borrow.returndate > borrow.DUEDATE;
+
+
+/* Q6 */
+
+SELECT p.PUBLISHERFULLNAME
+FROM publisher p
+WHERE p.PUBLISHERID NOT IN
+    (SELECT pb.PUBLISHERID
+    FROM published_by pb
+    WHERE lower(role) = 'editor')
+ORDER BY publisherfullname;
+
+
+/*Q7*/
+SELECT a.firstname || ' ' || a.lastname AS ' Author', b.TITLE AS 'Title', 
+    s.SUBJECTTYPE AS 'Subject',b.YEAR AS 'Published Year'
+FROM book b
+    LEFT JOIN written_by w 
+        ON b.BOOKDESCID= w.BOOKDESCID
+            LEFT JOIN author a 
+                ON a.AUTHORID= w.AUTHORID
+                    LEFT JOIN subject s 
+                        ON b.SUBJECTID=s.SUBJECTID
+WHERE lower(w.ROLE) = 'author' AND
+    lower(s.SUBJECTTYPE) = 'artificial intelligence';
+    
+
+/*Q8*/
+SELECT b.TITLE AS 'Title',p.FIRSTNAME || ' ' || p.LASTNAME AS ' Borrower Name',
+    date(bo.borrowdate) AS 'Date of Borrow'
+FROM book b
+    LEFT JOIN book_copy bc 
+        ON b.BOOKDESCID = bc.BOOKDESCID
+            LEFT JOIN borrow_copy c 
+                ON bc.BOOKID = c.BOOKID
+                    LEFT JOIN borrow bo 
+                        ON c.TRANSACTIONID= bo.TRANSACTIONID
+                            LEFT JOIN person p 
+                                ON bo.PERSONID = p.PERSONID
+WHERE b.TITLE != 'COMPUTER SCIENCE' AND
+     p.PERSONID IN
+         (SELECT p.personid
+         FROM book b
+             LEFT JOIN book_copy bc 
+                 ON b.BOOKDESCID = bc.BOOKDESCID
+                    LEFT JOIN borrow_copy c 
+                        ON bc.BOOKID = c.BOOKID
+                            LEFT JOIN borrow bo 
+                                ON c.TRANSACTIONID= bo.TRANSACTIONID
+                                    LEFT JOIN person p 
+                                        ON bo.PERSONID = p.PERSONID
+         WHERE b.TITLE = 'COMPUTER SCIENCE');
+
+
