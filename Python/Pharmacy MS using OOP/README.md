@@ -1,0 +1,1 @@
+The objective is to develop a pharmacy management system using the Object-Oriented Programming (OOP) paradigm. The pharmacists are the ones that use this system to process and print out receipts of the customers’ purchases
