@@ -23,3 +23,24 @@ Task 3: Clustering
 
 Task 4: Report/Presentation
 * Write a report summarizing the key results, explanations, and findings from Tasks 1–3.
+
+**Files**:
+
+Jupyter Notebook (S3991481-A2code.ipynb) 
+
+Report (S3991481-A2report.pdf)
+
+Data Samples:
+
+Task 1 - S3991481-A2SampleOne.csv
+
+Task 2 - S3991481-A2SampleTwo.csv
+
+Task 3 - S3991481-A2SampleThree.csv
+
+**Acknowledgements**
+
+* RMIT University
+* Data Science (with Python) course instructors
+* Python and Jupyter communities
+
