@@ -1,0 +1,82 @@
+ISO3,Countries and areas,Region,Sub-region,Income Group,Total,Residence (Rural),Residence (Urban),Wealth quintile (Poorest),Wealth quintile (Richest),Time period
+DZA,Algeria,MENA,MENA,Upper middle income (UM),25,10.0,33,1.0,78.0,2018
+AGO,Angola,SSA,ESA,Lower middle income (LM),19,2.0,27,0.0,62.0,2015
+ARM,Armenia,ECA,EECA,Upper middle income (UM),81,71.0,89,44.0,99.0,2015
+BGD,Bangladesh,SA,SA,Lower middle income (LM),34,31.0,48,8.0,73.0,2019
+BRB,Barbados,LAC,LAC,High income (H),68,66.0,69,20.0,100.0,2012
+BEN,Benin,SSA,WCA,Low income (L),4,2.0,7,0.0,16.0,2017
+BOL,Bolivia (Plurinational State of),LAC,LAC,Lower middle income (LM),12,3.0,17,1.0,56.0,2016
+BIH,Bosnia and Herzegovina,ECA,EECA,Upper middle income (UM),61,52.0,79,11.0,95.0,2011
+BRA,Brazil,LAC,LAC,Upper middle income (UM),82,50.0,89,84.0,97.0,2018
+BGR,Bulgaria,ECA,EECA,Upper middle income (UM),81,74.0,84,39.0,100.0,2013
+BFA,Burkina Faso,SSA,WCA,Low income (L),3,1.0,5,1.0,6.0,2010
+CMR,Cameroon,SSA,WCA,Lower middle income (LM),5,0.0,10,0.0,23.0,2014
+CAF,Central African Republic,SSA,WCA,Low income (L),5,1.0,11,0.0,18.0,2018
+TCD,Chad,SSA,WCA,Low income (L),2,1.0,8,0.0,9.0,2019
+CHL,Chile,LAC,LAC,High income (H),87,71.0,90,75.0,99.0,2017
+CHN,China,EAP,EAP,Upper middle income (UM),64,51.0,91,20.0,83.0,2018
+COL,Colombia,LAC,LAC,Upper middle income (UM),39,6.0,51,1.0,99.0,2015
+CRI,Costa Rica,LAC,LAC,Upper middle income (UM),74,60.0,81,46.0,99.0,2018
+CIV,Cote d'Ivoire,SSA,WCA,Lower middle income (LM),4,1.0,7,0.0,16.0,2016
+CUB,Cuba,LAC,LAC,Upper middle income (UM),4,0.0,7,16.0,0.0,2019
+COD,Democratic Republic of the Congo,SSA,WCA,Low income (L),1,0.0,2,0.0,2.0,2017
+DJI,Djibouti,SSA,ESA,Lower middle income (LM),7,2.0,11,2.0,36.0,2012
+DOM,Dominican Republic,LAC,LAC,Upper middle income (UM),25,12.0,30,0.0,75.0,2014
+ECU,Ecuador,LAC,LAC,Upper middle income (UM),43,19.0,55,21.0,72.0,2018
+EGY,Egypt,MENA,MENA,Lower middle income (LM),18,9.0,32,18.243589743589745,61.17948717948718,2015
+GMB,Gambia,SSA,WCA,Low income (L),66,47.0,76,25.0,94.0,2018
+GEO,Georgia,ECA,EECA,Upper middle income (UM),85,73.0,93,54.0,99.0,2018
+GHA,Ghana,SSA,WCA,Lower middle income (LM),16,10.0,25,3.0,49.0,2017
+GTM,Guatemala,LAC,LAC,Upper middle income (UM),10,3.0,20,0.0,49.0,2014
+GNB,Guinea-Bissau,SSA,WCA,Low income (L),2,1.0,3,0.0,5.0,2018
+HTI,Haiti,LAC,LAC,Low income (L),22,13.0,38,0.0,71.0,2016
+IND,India,SA,SA,Lower middle income (LM),8,5.0,16,0.0,35.0,2015
+IDN,Indonesia,EAP,EAP,Lower middle income (LM),20,11.0,28,7.0,47.0,2019
+IRQ,Iraq,MENA,MENA,Upper middle income (UM),50,36.0,57,16.0,84.0,2018
+JPN,Japan,EAP,EAP,High income (H),78,77.0,79,64.0,88.0,2018
+JOR,Jordan,MENA,MENA,Upper middle income (UM),41,38.0,41,23.0,73.0,2017
+KEN,Kenya,SSA,ESA,Lower middle income (LM),100,1.0,14,3.0,20.0,2013
+KIR,Kiribati,EAP,EAP,Lower middle income (LM),50,34.0,68,14.0,89.0,2018
+KGZ,Kyrgyzstan,ECA,EECA,Lower middle income (LM),74,69.0,84,56.0,90.0,2018
+LAO,Lao People's Democratic Republic,EAP,EAP,Lower middle income (LM),1,1.0,3,0.0,5.0,2017
+LSO,Lesotho,SSA,ESA,Lower middle income (LM),31,21.0,54,8.0,71.0,2018
+MDG,Madagascar,SSA,ESA,Low income (L),11,7.0,27,0.0,47.0,2018
+MDV,Maldives,SA,SA,Upper middle income (UM),68,69.0,66,52.0,87.0,2016
+MLI,Mali,SSA,WCA,Low income (L),7,4.0,17,0.0,26.0,2015
+MRT,Mauritania,SSA,WCA,Lower middle income (LM),3,1.0,6,0.0,11.0,2015
+MEX,Mexico,LAC,LAC,Upper middle income (UM),43,12.0,54,18.243589743589745,61.17948717948718,2018
+MNG,Mongolia,EAP,EAP,Lower middle income (LM),32,10.0,45,2.0,93.0,2018
+MNE,Montenegro,ECA,EECA,Upper middle income (UM),84,73.0,89,55.0,98.0,2018
+MAR,Morocco,MENA,MENA,Lower middle income (LM),19,12.0,26,10.0,30.0,2010
+NAM,Namibia,SSA,ESA,Upper middle income (UM),8,1.0,19,0.0,38.0,2013
+NIC,Nicaragua,LAC,LAC,Lower middle income (LM),4,2.0,6,0.0,15.0,2011
+NGA,Nigeria,SSA,WCA,Lower middle income (LM),3,2.0,8,0.0,7.0,2018
+PAK,Pakistan,SA,SA,Lower middle income (LM),9,4.0,20,0.0,47.0,2017
+PAN,Panama,LAC,LAC,High income (H),33,11.0,48,4.0,92.0,2013
+PER,Peru,LAC,LAC,Upper middle income (UM),25,1.0,34,5.0,70.0,2019
+RUS,Russian Federation,ECA,EECA,Upper middle income (UM),86,79.0,94,88.0,100.0,2018
+LCA,Saint Lucia,LAC,LAC,Upper middle income (UM),50,52.0,44,15.0,82.0,2012
+STP,Sao Tome and Principe,SSA,WCA,Lower middle income (LM),46,37.0,50,20.0,81.0,2019
+SEN,Senegal,SSA,WCA,Lower middle income (LM),6,3.0,11,1.0,22.0,2017
+SRB,Serbia,ECA,EECA,Upper middle income (UM),94,90.0,96,65.0,100.0,2019
+SLE,Sierra Leone,SSA,WCA,Low income (L),14,4.0,26,0.0,38.0,2017
+SOM,Somalia,SSA,ESA,Low income (L),13,100.0,100,100.0,100.0,2017
+SSD,South Sudan,SSA,ESA,Low income (L),0,0.0,1,0.0,2.0,2010
+LKA,Sri Lanka,SA,SA,Upper middle income (UM),69,67.0,84,71.0,99.0,2012
+SDN,Sudan,SSA,ESA,Lower middle income (LM),3,1.0,9,0.0,18.0,2014
+SUR,Suriname,LAC,LAC,Upper middle income (UM),50,35.0,57,19.0,91.0,2018
+TJK,Tajikistan,ECA,EECA,Low income (L),23,19.0,37,7.0,44.0,2017
+MKD,North Macedonia,ECA,EECA,Upper middle income (UM),92,91.0,92,68.0,100.0,2018
+TGO,Togo,SSA,WCA,Low income (L),24,8.0,49,0.0,78.0,2017
+TON,Tonga,EAP,EAP,Upper middle income (UM),92,91.0,93,83.0,97.0,2019
+TTO,Trinidad and Tobago,LAC,LAC,High income (H),47,38.0,54,4.0,93.0,2011
+TUN,Tunisia,MENA,MENA,Lower middle income (LM),41,22.0,50,15.0,85.0,2018
+TUR,Turkey,ECA,EECA,Upper middle income (UM),39,14.0,47,2.0,94.0,2013
+TKM,Turkmenistan,ECA,EECA,Upper middle income (UM),47,36.0,59,30.0,80.0,2019
+UGA,Uganda,SSA,ESA,Low income (L),0,0.0,1,0.0,1.0,2015
+UKR,Ukraine,ECA,EECA,Lower middle income (LM),66,26.5875,66,18.243589743589745,61.17948717948718,2013
+URY,Uruguay,LAC,LAC,High income (H),66,46.0,68,28.0,66.0,2012
+UZB,Uzbekistan,ECA,EECA,Lower middle income (LM),18,14.0,31,1.0,70.0,2017
+VNM,Viet Nam,EAP,EAP,Lower middle income (LM),45,17.0,62,11.0,82.0,2012
+ZMB,Zambia,SSA,ESA,Lower middle income (LM),8,2.0,16,0.0,31.0,2018
+ZWE,Zimbabwe,SSA,ESA,Lower middle income (LM),24,17.0,50,4.0,65.0,2018
